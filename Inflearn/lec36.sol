@@ -18,9 +18,14 @@ contract add{
     function addNumber(uint256 _num1, uint256 _num2) public pure returns(uint256){
         return _num1 + _num2;
     }
+    
+    // add 스마트컨트랙에 없는 함수를 부를 경우 fallback()함수 실행
+    // ex) 아래 caller 스마트컨트랙이 addNumber5(없는함수) 를 부르면 fallback 실행
     fallback() external payable  {
      emit JustFallback("JustFallback is called");
     }
+    
+    // 이더를 받을 수 있게 해줌
     receive() external payable {
      emit JustReceive("JustReceive is called");
     }
@@ -39,6 +44,8 @@ contract caller{
     function callMethod(address _contractAddr,uint256 _num1, uint256 _num2) public{
         
         (bool success, bytes memory outputFromCalledFunction) = _contractAddr.call(
+            // ether 안보내니까 value X
+            // abi.encodeWithSignature를 이용하여 함수를 부름 
              abi.encodeWithSignature("addNumber(uint256,uint256)",_num1,_num2)
             );
               
@@ -46,6 +53,7 @@ contract caller{
         emit calledFunction(success,outputFromCalledFunction);
     }
     
+    // 이더를 보내면서 없는 함수를 실행
     function callMethod3(address _contractAddr) public payable{
         
         (bool success, bytes memory outputFromCalledFunction) = _contractAddr.call{value:msg.value}(
