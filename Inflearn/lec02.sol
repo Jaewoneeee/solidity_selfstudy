@@ -33,6 +33,8 @@ contract lec2 {
     address public addr = 0x7EF2e0048f5bAeDe046f6BF797943daF4ED8CB47;
 
     // (4) int vs uint
+    // int : 기호있는 integer
+    // uint:  기호없는 integer 
     // 간단히 말해 '-' 가 있냐없냐
     int8 public it = 4;
     uint256 public uit = 123212;

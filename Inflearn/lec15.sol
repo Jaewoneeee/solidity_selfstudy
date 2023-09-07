@@ -6,8 +6,12 @@ pragma solidity >= 0.7.0 < 0.9.0;
 
 contract Father{
     event FatherName(string name);
+    event FatherName1(string name);
+    event FatherName2(string name);
     function who() public virtual {
         emit FatherName("KimJaewon");
+        emit FatherName1("55");
+        emit FatherName2("aasdf");
     }
 }
 

@@ -20,7 +20,7 @@ contract B{
 
     // a값을 읽어오기만 하기때문에 view를 써줬음
     function get_A() public view returns(uint256){
-        return instance.a();
+        return instance.a(); //변수를 접근할때는 () 를 붙여야 리턴이 된다
     }
     function change_A(uint256 _value) public {
         instance.change(_value);

@@ -13,7 +13,7 @@ contract lec20{
     }
 
     // 이렇게 하면 Character라는 구조체가 하나의 타입이 된것임!
-    mapping(uint256=>Character) public CharacterMapping;
+    mapping(uint256 => Character) public CharacterMapping;
     Character[] public CharacterArray;
 
     function createCharacter(uint256 _age, string memory _name, string memory _job) pure public returns(Character memory) {
